@@ -2,26 +2,44 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Evento</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Medtronic - Harmony National Implanters Meeting</title>
+    <meta property="og:title" content="Medtronic - Harmony National Implanters Meeting">
+    <meta property="og:description" content="26-27 Marzo 2026 • Via Varesina 162, Milano">
+    <meta property="og:type" content="website">
     <style>
+        @font-face {
+            font-family: 'Avenir Next World';
+            src: url('coll-avenir-next-world-font (1)/Avenir Next World web/Fonts/bae40acb-d6f4-4286-8b5c-a268303f2bcf.woff2') format('woff2'),
+                 url('coll-avenir-next-world-font (1)/Avenir Next World web/Fonts/de44dcbe-a981-426e-b310-c56554485383.woff') format('woff');
+            font-weight: 250;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Avenir Next World';
+            src: url('coll-avenir-next-world-font (1)/Avenir Next World web/Fonts/09ab0626-bb45-4650-acc8-0182d693df02.woff2') format('woff2'),
+                 url('coll-avenir-next-world-font (1)/Avenir Next World web/Fonts/1397e812-9307-4267-8a99-8a22ea7c69c7.woff') format('woff');
+            font-weight: 400;
+            font-style: normal;
+        }
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+
         body {
-            font-family: 'DM Sans', sans-serif;
-            min-height: 100vh;
+            font-family: 'Avenir Next World', sans-serif;
             display: flex;
             align-items: center;
             justify-content: center;
             background: #F5F5F5;
-            padding: 20px;
+            padding: 10px;
         }
 
         .event-card {
@@ -34,28 +52,67 @@
         }
 
         .event-header {
-            background: #140F4B;
-            padding: 32px 28px;
+            background: linear-gradient(135deg, #e5057f 0%, #ff4da6 100%);
+            padding: 28px 24px;
             color: #fff;
+            border-radius: 20px 20px 0 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .event-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -30%;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .event-header::after {
+            content: '';
+            position: absolute;
+            bottom: -60%;
+            left: -20%;
+            width: 150px;
+            height: 150px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+        }
+
+        .event-logo {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            max-width: 150px;
+            height: auto;
         }
 
         .event-date-badge {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 8px 14px;
-            border-radius: 30px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            margin-bottom: 16px;
-            backdrop-filter: blur(10px);
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.25);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 400;
+            margin-bottom: 14px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            position: relative;
+            z-index: 1;
         }
 
         .event-title {
-            font-size: 1.75rem;
-            font-weight: 700;
-            line-height: 1.3;
+            font-size: 1.6rem;
+            font-weight: 400;
+            line-height: 1.35;
+            letter-spacing: -0.3px;
+            position: relative;
+            z-index: 1;
         }
 
         .event-body {
@@ -183,77 +240,87 @@
         .cal-btn.apple { background: #1d1d1f; color: #fff; }
         .cal-btn.outlook { background: #0078d4; color: #fff; }
         .cal-btn.outlook svg path { fill: #fff; }
-        .cal-btn.yahoo { background: #6001d2; color: #fff; }
-        .cal-btn.yahoo svg path { fill: #fff; }
+        .cal-btn.android { background: #3DDC84; color: #fff; }
+        .cal-btn.android svg path { fill: #fff; }
         .cal-btn.teams { background: #5059c9; color: #fff; }
         .cal-btn.teams svg path { fill: #fff; }
 
         @media (max-width: 480px) {
             body {
-                padding: 10px;
+                padding: 8px;
+            }
+            .event-card {
+                border-radius: 14px;
             }
             .event-header {
-                padding: 16px 16px;
+                padding: 12px 14px;
+            }
+            .event-logo {
+                max-width: 130px;
+                top: 12px;
+                left: 12px;
             }
             .event-title {
-                font-size: 1.1rem;
+                font-size: 1rem;
             }
             .event-date-badge {
-                padding: 5px 10px;
-                font-size: 0.75rem;
-                margin-bottom: 10px;
+                padding: 4px 8px;
+                font-size: 0.7rem;
+                margin-bottom: 8px;
             }
             .event-body {
-                padding: 14px 16px;
+                padding: 12px 14px;
             }
             .event-detail {
-                margin-bottom: 12px;
-                gap: 10px;
+                margin-bottom: 10px;
+                gap: 8px;
             }
             .event-icon {
-                width: 32px;
-                height: 32px;
-                border-radius: 8px;
+                width: 28px;
+                height: 28px;
+                border-radius: 6px;
             }
             .event-icon svg {
-                width: 16px;
-                height: 16px;
-            }
-            .event-detail-content h4 {
-                font-size: 0.7rem;
-                margin-bottom: 2px;
-            }
-            .event-detail-content p {
-                font-size: 0.85rem;
-            }
-            .event-description {
-                font-size: 0.8rem;
-            }
-            .event-footer {
-                padding: 0 16px 14px;
-            }
-            .calendar-label {
-                font-size: 0.75rem;
-                margin-bottom: 10px;
-            }
-            .calendar-options {
-                gap: 6px;
-            }
-            .cal-btn {
-                padding: 8px 10px;
-                font-size: 0.7rem;
-                border-radius: 8px;
-            }
-            .cal-btn svg {
                 width: 14px;
                 height: 14px;
+            }
+            .event-detail-content h4 {
+                font-size: 0.65rem;
+                margin-bottom: 1px;
+            }
+            .event-detail-content p {
+                font-size: 0.8rem;
+            }
+            .event-description {
+                font-size: 0.75rem;
+                line-height: 1.4;
+            }
+            .event-footer {
+                padding: 0 14px 12px;
+            }
+            .calendar-label {
+                font-size: 0.7rem;
+                margin-bottom: 8px;
+            }
+            .calendar-options {
+                gap: 5px;
+            }
+            .cal-btn {
+                padding: 6px 8px;
+                font-size: 0.65rem;
+                border-radius: 6px;
+            }
+            .cal-btn svg {
+                width: 12px;
+                height: 12px;
             }
         }
     </style>
 </head>
 <body>
+    <img src="art-logo-en-rgb-bl.png" alt="Medtronic Logo" class="event-logo">
     <div class="event-card">
-        <div class="event-header">
+            <div class="event-header">
             <div class="event-date-badge">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
@@ -304,7 +371,7 @@
                 </div>
                 <div class="event-detail-content">
                     <h4>Descrizione</h4>
-                    <p class="event-description">Medtronic - Harmony National Implanters Meeting in Milan</p>
+                    <p class="event-description">Harmony National Implanters Meeting at X-Value Lab Medtronic Office in Milan</p>
                 </div>
             </div>
         </div>
@@ -324,11 +391,11 @@
                     <svg viewBox="0 0 24 24"><path fill="#0078D4" d="M24 7.387v10.478c0 .23-.08.424-.238.576-.158.154-.352.23-.58.23h-8.547v-6.959l1.6 1.229c.102.086.223.13.363.13.14 0 .26-.044.363-.13l6.8-5.224c.086-.07.154-.14.204-.21.05-.07.035-.132-.045-.186-.08-.054-.165-.08-.255-.08H14.635V5.33h8.547c.228 0 .422.076.58.23.158.152.238.346.238.576v1.25zM14.635 18.67v-6.959l-1.6 1.229c-.102.086-.223.13-.363.13-.14 0-.26-.044-.363-.13L5.51 7.716c-.086-.07-.154-.14-.204-.21-.05-.07-.035-.132.045-.186.08-.054.165-.08.255-.08h8.547V5.33H5.606c-.228 0-.422.076-.58.23-.158.152-.238.346-.238.576v10.478c0 .23.08.424.238.576.158.154.352.23.58.23h8.547v1.25h.482zM0 7.408v9.184c0 .394.14.73.418 1.008.28.278.616.418 1.01.418h3.696V5.982H1.428c-.394 0-.73.14-1.01.418C.14 6.678 0 7.014 0 7.408zm7.5 10.61V5.982L3.75 9.258v5.484L7.5 18.018z"/></svg>
                     Outlook
                 </a>
-                <a href="https://calendar.yahoo.com/?v=60&title=Medtronic%20-%20Harmony%20National%20Implanters%20Meeting&st=20260326T180000Z&et=20260327T150000Z&in_loc=Via%20Varesina%2C%20162%2C%2020156%20Milano%20MI%2C%20Italia&desc=Medtronic%20-%20Harmony%20National%20Implanters%20Meeting%20in%20Milan" target="_blank" class="cal-btn yahoo">
-                    <svg viewBox="0 0 24 24"><path fill="#6001D2" d="M12.996 13.342L18.482 3h-3.768l-3.17 6.384L8.296 3H4.5l5.486 10.342V21h3.01v-7.658z"/></svg>
-                    Yahoo
+                <a href="event.ics" class="cal-btn android" download>
+                    <svg viewBox="0 0 24 24"><path fill="#fff" d="M6 18c0 .55.45 1 1 1h1v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h2v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h1c.55 0 1-.45 1-1V8H6v10zM3.5 8C2.67 8 2 8.67 2 9.5v7c0 .83.67 1.5 1.5 1.5S5 17.33 5 16.5v-7C5 8.67 4.33 8 3.5 8zm17 0c-.83 0-1.5.67-1.5 1.5v7c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-7c0-.83-.67-1.5-1.5-1.5zm-4.97-5.84l1.3-1.3c.2-.2.2-.51 0-.71-.2-.2-.51-.2-.71 0l-1.48 1.48C13.85 1.23 12.95 1 12 1c-.96 0-1.86.23-2.66.63L7.85.15c-.2-.2-.51-.2-.71 0-.2.2-.2.51 0 .71l1.31 1.31C6.97 3.26 6 5.01 6 7h12c0-1.99-.97-3.75-2.47-4.84zM10 5H9V4h1v1zm5 0h-1V4h1v1z"/></svg>
+                    Android
                 </a>
-                <a href="https://teams.microsoft.com/l/meeting/new?subject=Medtronic%20-%20Harmony%20National%20Implanters%20Meeting&startTime=2026-03-26T19:00:00&endTime=2026-03-27T16:00:00&location=Via%20Varesina%2C%20162%2C%2020156%20Milano%20MI%2C%20Italia&content=Medtronic%20-%20Harmony%20National%20Implanters%20Meeting%20in%20Milan" target="_blank" class="cal-btn teams">
+                <a href="https://teams.microsoft.com/l/meeting/new?subject=Medtronic%20-%20Harmony%20National%20Implanters%20Meeting&startTime=2026-03-26T18:00:00Z&endTime=2026-03-27T15:00:00Z&location=Via%20Varesina%2C%20162%2C%2020156%20Milano%20MI%2C%20Italia&body=Medtronic%20-%20Harmony%20National%20Implanters%20Meeting%20in%20Milan" target="_blank" class="cal-btn teams">
                     <svg viewBox="0 0 24 24"><path fill="#5059C9" d="M19.5 6.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/><path fill="#5059C9" d="M22 8h-5c-.55 0-1 .45-1 1v7c0 1.65 1.35 3 3 3s3-1.35 3-3V9c0-.55-.45-1-1-1z"/><path fill="#7B83EB" d="M14.5 5.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/><path fill="#7B83EB" d="M15 7H9c-.55 0-1 .45-1 1v9c0 2.2 1.8 4 4 4s4-1.8 4-4V8c0-.55-.45-1-1-1z"/><path fill="#4B53BC" d="M12 21c-2.2 0-4-1.8-4-4v-6H2v8c0 1.1.9 2 2 2h8z"/></svg>
                     Teams
                 </a>
