@@ -1,0 +1,351 @@
+@font-face {
+  font-family: "Avenir Next World";
+  src: url("fonts/AvenirNextWorld-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Avenir Next World";
+  src: url("fonts/AvenirNextWorld-Demi.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Avenir Next World";
+  src: url("fonts/AvenirNextWorld-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --cyan: #29c4ea;
+  --mint: #63c5b6;
+  --teal: #3fbeb1;
+  --blue: #2654a5;
+  --font: "Avenir Next World", "Avenir Next", Avenir, "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+html {
+  background: #2654a5;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  position: relative;
+  overflow-x: hidden;
+  font-family: var(--font);
+  font-weight: 400;
+  color: #fff;
+  line-height: 1.4;
+}
+
+/* Fixed gradient layer: background-attachment: fixed is ignored on iOS Safari */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background: linear-gradient(135deg, #2654a5 0%, #2f6ca8 45%, #3b99af 100%);
+}
+
+.wave {
+  position: fixed;
+  z-index: -1;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  pointer-events: none;
+}
+
+.wave-a {
+  width: 140vw;
+  height: 90vw;
+  left: -30vw;
+  top: -55vw;
+}
+
+.wave-b {
+  width: 160vw;
+  height: 100vw;
+  right: -60vw;
+  bottom: -70vw;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+main {
+  position: relative;
+  z-index: 1;
+  width: min(1080px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 32px 0 56px;
+}
+
+header img {
+  display: block;
+  height: 28px;
+  width: auto;
+  filter: brightness(0) invert(1);
+}
+
+h1 {
+  margin: 24px 0 0;
+  color: var(--mint);
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+
+.venue {
+  margin: 4px 0 0;
+  color: var(--cyan);
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.dates {
+  margin: 4px 0 20px;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.pill {
+  display: inline-block;
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: var(--mint);
+  color: var(--blue);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.lead {
+  margin: 12px 0 0;
+  max-width: 34ch;
+  font-size: 17px;
+}
+
+section {
+  margin-top: 36px;
+}
+
+section h2 {
+  position: relative;
+  margin: 0 0 14px;
+  padding-left: 16px;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+section h2::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.1em;
+  width: 6px;
+  height: 1em;
+  border-radius: 3px;
+  background: var(--mint);
+}
+
+section h2 sup {
+  font-size: 0.55em;
+  vertical-align: top;
+  position: relative;
+  top: 0.2em;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+
+/* Liquid glass squircle tile (superellipse, like the trifold) */
+.tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  aspect-ratio: 1 / 1;
+  padding: 10% 10% 9%;
+  color: #fff;
+  filter: drop-shadow(0 16px 22px rgba(8, 28, 78, 0.28));
+}
+
+.tile::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  clip-path: polygon(
+    100% 50%, 99.95% 62.79%, 99.79% 68.06%, 99.52% 72.08%, 99.14% 75.44%, 98.66% 78.35%, 98.06% 80.93%, 97.35% 83.25%, 96.53% 85.36%, 95.59% 87.27%, 94.54% 89.01%, 93.35% 90.6%, 92.04% 92.04%, 90.6% 93.35%, 89.01% 94.54%, 87.27% 95.59%, 85.36% 96.53%, 83.25% 97.35%, 80.93% 98.06%, 78.35% 98.66%, 75.44% 99.14%, 72.08% 99.52%, 68.06% 99.79%, 62.79% 99.95%,
+    50% 100%, 37.21% 99.95%, 31.94% 99.79%, 27.92% 99.52%, 24.56% 99.14%, 21.65% 98.66%, 19.07% 98.06%, 16.75% 97.35%, 14.64% 96.53%, 12.73% 95.59%, 10.99% 94.54%, 9.4% 93.35%, 7.96% 92.04%, 6.65% 90.6%, 5.46% 89.01%, 4.41% 87.27%, 3.47% 85.36%, 2.65% 83.25%, 1.94% 80.93%, 1.34% 78.35%, 0.86% 75.44%, 0.48% 72.08%, 0.21% 68.06%, 0.05% 62.79%,
+    0% 50%, 0.05% 37.21%, 0.21% 31.94%, 0.48% 27.92%, 0.86% 24.56%, 1.34% 21.65%, 1.94% 19.07%, 2.65% 16.75%, 3.47% 14.64%, 4.41% 12.73%, 5.46% 10.99%, 6.65% 9.4%, 7.96% 7.96%, 9.4% 6.65%, 10.99% 5.46%, 12.73% 4.41%, 14.64% 3.47%, 16.75% 2.65%, 19.07% 1.94%, 21.65% 1.34%, 24.56% 0.86%, 27.92% 0.48%, 31.94% 0.21%, 37.21% 0.05%,
+    50% 0%, 62.79% 0.05%, 68.06% 0.21%, 72.08% 0.48%, 75.44% 0.86%, 78.35% 1.34%, 80.93% 1.94%, 83.25% 2.65%, 85.36% 3.47%, 87.27% 4.41%, 89.01% 5.46%, 90.6% 6.65%, 92.04% 7.96%, 93.35% 9.4%, 94.54% 10.99%, 95.59% 12.73%, 96.53% 14.64%, 97.35% 16.75%, 98.06% 19.07%, 98.66% 21.65%, 99.14% 24.56%, 99.52% 27.92%, 99.79% 31.94%, 99.95% 37.21%
+  );
+  background:
+    radial-gradient(120% 70% at 20% 0%, rgba(255, 255, 255, 0.22), transparent 60%),
+    linear-gradient(
+      160deg,
+      rgba(255, 255, 255, 0.3) 0%,
+      rgba(255, 255, 255, 0.13) 55%,
+      rgba(255, 255, 255, 0.2) 100%
+    );
+  -webkit-backdrop-filter: blur(18px) saturate(1.5);
+  backdrop-filter: blur(18px) saturate(1.5);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.4),
+    inset 0 2px 0 rgba(255, 255, 255, 0.35);
+}
+
+/* Browsers with native squircle corners: keep the real shadow and border */
+@supports (corner-shape: squircle) {
+  .tile {
+    filter: none;
+  }
+
+  .tile::before {
+    clip-path: none;
+    border-radius: 50%;
+    corner-shape: squircle;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.5),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+      0 16px 40px rgba(8, 28, 78, 0.22);
+  }
+}
+
+.tile > * {
+  position: relative;
+  z-index: 1;
+}
+
+.time {
+  display: inline-flex;
+  align-self: flex-start;
+  margin: 0;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.tile h3 {
+  margin: 14px 0 0;
+  color: #fff;
+  font-size: 25px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.12;
+  text-shadow: 0 1px 2px rgba(8, 28, 78, 0.2);
+}
+
+.kind {
+  margin: 8px 0 0;
+  color: #8fe6d8;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.faculty {
+  margin: auto 0 0;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.28);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.tile a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 14px;
+  padding: 12px 18px;
+  border-radius: 999px;
+  background: var(--mint);
+  color: #10306b;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 6px 16px rgba(8, 28, 78, 0.2);
+}
+
+.tile a:hover {
+  background: #7ad3c6;
+}
+
+.tile a svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Small phones: keep text inside the square */
+@media (max-width: 360px) {
+  .tile h3 {
+    font-size: 22px;
+  }
+
+  .kind,
+  .faculty {
+    font-size: 13px;
+  }
+}
+
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 900px) {
+  h1 {
+    font-size: 44px;
+  }
+
+  .venue {
+    font-size: 30px;
+  }
+
+  .dates {
+    font-size: 24px;
+  }
+
+  section h2 {
+    font-size: 24px;
+  }
+
+  .tile h3 {
+    font-size: 23px;
+  }
+}
+
+@media (min-width: 1000px) {
+  .grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
