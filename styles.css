@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Avenir Next World";
-  src: url("fonts/AvenirNextWorld-Regular.woff2?v=202609307") format("woff2");
+  src: url("fonts/AvenirNextWorld-Regular.woff2?v=202609308") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -8,7 +8,7 @@
 
 @font-face {
   font-family: "Avenir Next World";
-  src: url("fonts/AvenirNextWorld-Demi.woff2?v=202609307") format("woff2");
+  src: url("fonts/AvenirNextWorld-Demi.woff2?v=202609308") format("woff2");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -16,7 +16,7 @@
 
 @font-face {
   font-family: "Avenir Next World";
-  src: url("fonts/AvenirNextWorld-Bold.woff2?v=202609307") format("woff2");
+  src: url("fonts/AvenirNextWorld-Bold.woff2?v=202609308") format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -251,7 +251,8 @@ section h2 sup {
   line-height: 1.35;
 }
 
-.faculty .person {
+.faculty .person,
+.keep {
   white-space: nowrap;
 }
 
