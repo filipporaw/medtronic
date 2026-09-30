@@ -12,19 +12,19 @@
     <meta property="og:description" content="Medtronic Interventional Cardiac Therapies – GISE 2026" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://medtronicstructuralheart.com/" />
-    <meta property="og:image" content="https://medtronicstructuralheart.com/preview.webp?v=202609305" />
+    <meta property="og:image" content="https://medtronicstructuralheart.com/preview.webp?v=202609306" />
     <meta property="og:image:type" content="image/webp" />
     <meta property="og:image:width" content="720" />
     <meta property="og:image:height" content="390" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="GISE Congress 2026" />
     <meta name="twitter:description" content="Medtronic Interventional Cardiac Therapies – GISE 2026" />
-    <meta name="twitter:image" content="https://medtronicstructuralheart.com/preview.webp?v=202609305" />
-    <link rel="stylesheet" href="styles.css?v=202609305" />
+    <meta name="twitter:image" content="https://medtronicstructuralheart.com/preview.webp?v=202609306" />
+    <link rel="stylesheet" href="styles.css?v=202609306" />
     <style>
 @font-face {
   font-family: "Avenir Next World";
-  src: url("fonts/AvenirNextWorld-Regular.woff2?v=202609305") format("woff2");
+  src: url("fonts/AvenirNextWorld-Regular.woff2?v=202609306") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -32,7 +32,7 @@
 
 @font-face {
   font-family: "Avenir Next World";
-  src: url("fonts/AvenirNextWorld-Demi.woff2?v=202609305") format("woff2");
+  src: url("fonts/AvenirNextWorld-Demi.woff2?v=202609306") format("woff2");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -40,7 +40,7 @@
 
 @font-face {
   font-family: "Avenir Next World";
-  src: url("fonts/AvenirNextWorld-Bold.woff2?v=202609305") format("woff2");
+  src: url("fonts/AvenirNextWorld-Bold.woff2?v=202609306") format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -193,7 +193,7 @@ section h2 sup {
 .tile {
   position: relative;
   display: grid;
-  grid-template-rows: auto 2.24em 2.6em minmax(0, 1fr) auto;
+  grid-template-rows: auto auto 2.6em minmax(0, 1fr) auto;
   align-content: stretch;
   gap: 8px;
   aspect-ratio: 1 / 1;
@@ -248,7 +248,8 @@ section h2 sup {
 }
 
 .tile h3 {
-  margin: 4px 0 0;
+  margin: 0;
+  min-height: 2.24em;
   color: #fff;
   font-size: 24px;
   font-weight: 700;
@@ -307,6 +308,10 @@ section h2 sup {
 
   .tile h3 {
     font-size: 18px;
+  }
+
+  .kind {
+    margin-top: 10px;
   }
 
   .time,

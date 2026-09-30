@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Avenir Next World";
-  src: url("fonts/AvenirNextWorld-Regular.woff2?v=202609305") format("woff2");
+  src: url("fonts/AvenirNextWorld-Regular.woff2?v=202609306") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -8,7 +8,7 @@
 
 @font-face {
   font-family: "Avenir Next World";
-  src: url("fonts/AvenirNextWorld-Demi.woff2?v=202609305") format("woff2");
+  src: url("fonts/AvenirNextWorld-Demi.woff2?v=202609306") format("woff2");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -16,7 +16,7 @@
 
 @font-face {
   font-family: "Avenir Next World";
-  src: url("fonts/AvenirNextWorld-Bold.woff2?v=202609305") format("woff2");
+  src: url("fonts/AvenirNextWorld-Bold.woff2?v=202609306") format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -169,7 +169,7 @@ section h2 sup {
 .tile {
   position: relative;
   display: grid;
-  grid-template-rows: auto 2.24em 2.6em minmax(0, 1fr) auto;
+  grid-template-rows: auto auto 2.6em minmax(0, 1fr) auto;
   align-content: stretch;
   gap: 8px;
   aspect-ratio: 1 / 1;
@@ -224,7 +224,8 @@ section h2 sup {
 }
 
 .tile h3 {
-  margin: 4px 0 0;
+  margin: 0;
+  min-height: 2.24em;
   color: #fff;
   font-size: 24px;
   font-weight: 700;
@@ -283,6 +284,10 @@ section h2 sup {
 
   .tile h3 {
     font-size: 18px;
+  }
+
+  .kind {
+    margin-top: 10px;
   }
 
   .time,
