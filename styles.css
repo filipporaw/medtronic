@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Avenir Next World";
-  src: url("fonts/AvenirNextWorld-Regular.woff2?v=202609303") format("woff2");
+  src: url("fonts/AvenirNextWorld-Regular.woff2?v=202609304") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -8,7 +8,7 @@
 
 @font-face {
   font-family: "Avenir Next World";
-  src: url("fonts/AvenirNextWorld-Demi.woff2?v=202609303") format("woff2");
+  src: url("fonts/AvenirNextWorld-Demi.woff2?v=202609304") format("woff2");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -16,7 +16,7 @@
 
 @font-face {
   font-family: "Avenir Next World";
-  src: url("fonts/AvenirNextWorld-Bold.woff2?v=202609303") format("woff2");
+  src: url("fonts/AvenirNextWorld-Bold.woff2?v=202609304") format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -102,7 +102,6 @@ header img {
   display: block;
   height: 28px;
   width: auto;
-  filter: brightness(0) invert(1);
 }
 
 h1 {
@@ -169,14 +168,14 @@ section h2 sup {
 /* Rounded card is the fallback. Squircle and liquid glass apply when the browser can blur. */
 .tile {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  display: grid;
+  grid-template-rows: auto 2.24em 2.6em minmax(0, 1fr) auto;
+  align-content: stretch;
   gap: 8px;
   aspect-ratio: 1 / 1;
   min-width: 0;
   min-height: 0;
-  padding: 16%;
+  padding: 12% 13% 11%;
   border-radius: 30%;
   color: #fff;
   background: rgba(78, 156, 186, 0.78);
@@ -185,11 +184,15 @@ section h2 sup {
     0 16px 28px rgba(8, 28, 78, 0.22);
 }
 
+@supports (corner-shape: squircle) {
+  .tile {
+    corner-shape: squircle;
+  }
+}
+
 @supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
   .tile {
-    border-radius: 0;
-    box-shadow: none;
-    background: transparent;
+    background-color: transparent;
     background-image:
       radial-gradient(120% 70% at 20% 0%, rgba(255, 255, 255, 0.22), transparent 60%),
       linear-gradient(
@@ -200,8 +203,6 @@ section h2 sup {
       );
     -webkit-backdrop-filter: blur(18px) saturate(1.5);
     backdrop-filter: blur(18px) saturate(1.5);
-    -webkit-mask: url("squircle.svg?v=202609303") center / 100% 100% no-repeat;
-    mask: url("squircle.svg?v=202609303") center / 100% 100% no-repeat;
   }
 }
 
@@ -242,8 +243,8 @@ section h2 sup {
   padding-top: 10px;
   border-top: 1px solid rgba(255, 255, 255, 0.28);
   color: rgba(255, 255, 255, 0.92);
-  font-size: 15px;
-  line-height: 1.4;
+  font-size: 14px;
+  line-height: 1.35;
 }
 
 .tile a {
@@ -251,7 +252,7 @@ section h2 sup {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  margin-top: 6px;
+  margin-top: 0;
   padding: 12px 18px;
   border-radius: 999px;
   background: #63c5b6;
@@ -271,13 +272,24 @@ section h2 sup {
   height: 16px;
 }
 
-@media (max-width: 360px) {
-  .tile h3 {
-    font-size: 22px;
+@media (max-width: 639px) {
+  .tile {
+    gap: 6px;
+    padding: 14%;
   }
 
+  .tile h3 {
+    font-size: 18px;
+  }
+
+  .time,
   .kind,
   .faculty {
+    font-size: 13px;
+  }
+
+  .tile a {
+    padding: 10px 14px;
     font-size: 14px;
   }
 }
