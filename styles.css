@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Avenir Next World";
-  src: url("fonts/AvenirNextWorld-Regular.woff2") format("woff2");
+  src: url("fonts/AvenirNextWorld-Regular.woff2?v=20260930") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -8,7 +8,7 @@
 
 @font-face {
   font-family: "Avenir Next World";
-  src: url("fonts/AvenirNextWorld-Demi.woff2") format("woff2");
+  src: url("fonts/AvenirNextWorld-Demi.woff2?v=20260930") format("woff2");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -16,7 +16,7 @@
 
 @font-face {
   font-family: "Avenir Next World";
-  src: url("fonts/AvenirNextWorld-Bold.woff2") format("woff2");
+  src: url("fonts/AvenirNextWorld-Bold.woff2?v=20260930") format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -52,20 +52,26 @@ body {
   font-weight: 400;
   color: #fff;
   line-height: 1.4;
+  background: linear-gradient(135deg, #2654a5 0%, #2f6ca8 45%, #3b99af 100%);
 }
 
-/* Fixed gradient layer: background-attachment: fixed is ignored on iOS Safari */
+/* Fixed layer so the gradient still fills the screen on iOS, where
+   background-attachment: fixed is ignored. */
 body::before {
   content: "";
   position: fixed;
-  inset: 0;
-  z-index: -2;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
   background: linear-gradient(135deg, #2654a5 0%, #2f6ca8 45%, #3b99af 100%);
+  pointer-events: none;
 }
 
 .wave {
   position: fixed;
-  z-index: -1;
+  z-index: 0;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.08);
   pointer-events: none;
@@ -89,7 +95,7 @@ body::before {
 main {
   position: relative;
   z-index: 1;
-  width: min(1080px, calc(100% - 32px));
+  width: min(1080px, calc(100% - 56px));
   margin: 0 auto;
   padding: 32px 0 56px;
 }
@@ -118,25 +124,9 @@ h1 {
   line-height: 1.2;
 }
 
-.dates {
-  margin: 4px 0 20px;
-  font-size: 20px;
-  font-weight: 400;
-}
-
-.pill {
-  display: inline-block;
-  padding: 8px 18px;
-  border-radius: 999px;
-  background: var(--mint);
-  color: var(--blue);
-  font-size: 15px;
-  font-weight: 600;
-}
-
 .lead {
-  margin: 12px 0 0;
-  max-width: 34ch;
+  margin: 16px 0 0;
+  max-width: 36ch;
   font-size: 17px;
 }
 
@@ -174,17 +164,21 @@ section h2 sup {
 
 .grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   gap: 18px;
 }
 
-/* Liquid glass squircle tile (superellipse, like the trifold) */
+/* Liquid glass squircle. Exponent 3.79 matches the reference outline. */
 .tile {
   position: relative;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  gap: 8px;
   aspect-ratio: 1 / 1;
-  padding: 10% 10% 9%;
+  min-width: 0;
+  min-height: 0;
+  padding: 16%;
   color: #fff;
   filter: drop-shadow(0 16px 22px rgba(8, 28, 78, 0.28));
 }
@@ -192,45 +186,31 @@ section h2 sup {
 .tile::before {
   content: "";
   position: absolute;
-  inset: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   z-index: 0;
   clip-path: polygon(
-    100% 50%, 99.95% 62.79%, 99.79% 68.06%, 99.52% 72.08%, 99.14% 75.44%, 98.66% 78.35%, 98.06% 80.93%, 97.35% 83.25%, 96.53% 85.36%, 95.59% 87.27%, 94.54% 89.01%, 93.35% 90.6%, 92.04% 92.04%, 90.6% 93.35%, 89.01% 94.54%, 87.27% 95.59%, 85.36% 96.53%, 83.25% 97.35%, 80.93% 98.06%, 78.35% 98.66%, 75.44% 99.14%, 72.08% 99.52%, 68.06% 99.79%, 62.79% 99.95%,
-    50% 100%, 37.21% 99.95%, 31.94% 99.79%, 27.92% 99.52%, 24.56% 99.14%, 21.65% 98.66%, 19.07% 98.06%, 16.75% 97.35%, 14.64% 96.53%, 12.73% 95.59%, 10.99% 94.54%, 9.4% 93.35%, 7.96% 92.04%, 6.65% 90.6%, 5.46% 89.01%, 4.41% 87.27%, 3.47% 85.36%, 2.65% 83.25%, 1.94% 80.93%, 1.34% 78.35%, 0.86% 75.44%, 0.48% 72.08%, 0.21% 68.06%, 0.05% 62.79%,
-    0% 50%, 0.05% 37.21%, 0.21% 31.94%, 0.48% 27.92%, 0.86% 24.56%, 1.34% 21.65%, 1.94% 19.07%, 2.65% 16.75%, 3.47% 14.64%, 4.41% 12.73%, 5.46% 10.99%, 6.65% 9.4%, 7.96% 7.96%, 9.4% 6.65%, 10.99% 5.46%, 12.73% 4.41%, 14.64% 3.47%, 16.75% 2.65%, 19.07% 1.94%, 21.65% 1.34%, 24.56% 0.86%, 27.92% 0.48%, 31.94% 0.21%, 37.21% 0.05%,
-    50% 0%, 62.79% 0.05%, 68.06% 0.21%, 72.08% 0.48%, 75.44% 0.86%, 78.35% 1.34%, 80.93% 1.94%, 83.25% 2.65%, 85.36% 3.47%, 87.27% 4.41%, 89.01% 5.46%, 90.6% 6.65%, 92.04% 7.96%, 93.35% 9.4%, 94.54% 10.99%, 95.59% 12.73%, 96.53% 14.64%, 97.35% 16.75%, 98.06% 19.07%, 98.66% 21.65%, 99.14% 24.56%, 99.52% 27.92%, 99.79% 31.94%, 99.95% 37.21%
+    100% 50%, 99.94% 61.86%, 99.77% 67.07%, 99.49% 71.11%, 99.09% 74.5%, 98.58% 77.47%, 97.95% 80.12%, 97.21% 82.51%, 96.35% 84.68%, 95.36% 86.67%, 94.25% 88.48%, 93.01% 90.13%, 91.64% 91.64%, 90.13% 93.01%, 88.48% 94.25%, 86.67% 95.36%, 84.68% 96.35%, 82.51% 97.21%, 80.12% 97.95%, 77.47% 98.58%, 74.5% 99.09%, 71.11% 99.49%, 67.07% 99.77%, 61.86% 99.94%,
+    50% 100%, 38.14% 99.94%, 32.93% 99.77%, 28.89% 99.49%, 25.5% 99.09%, 22.53% 98.58%, 19.88% 97.95%, 17.49% 97.21%, 15.32% 96.35%, 13.33% 95.36%, 11.52% 94.25%, 9.87% 93.01%, 8.36% 91.64%, 6.99% 90.13%, 5.75% 88.48%, 4.64% 86.67%, 3.65% 84.68%, 2.79% 82.51%, 2.05% 80.12%, 1.42% 77.47%, 0.91% 74.5%, 0.51% 71.11%, 0.23% 67.07%, 0.06% 61.86%,
+    0% 50%, 0.06% 38.14%, 0.23% 32.93%, 0.51% 28.89%, 0.91% 25.5%, 1.42% 22.53%, 2.05% 19.88%, 2.79% 17.49%, 3.65% 15.32%, 4.64% 13.33%, 5.75% 11.52%, 6.99% 9.87%, 8.36% 8.36%, 9.87% 6.99%, 11.52% 5.75%, 13.33% 4.64%, 15.32% 3.65%, 17.49% 2.79%, 19.88% 2.05%, 22.53% 1.42%, 25.5% 0.91%, 28.89% 0.51%, 32.93% 0.23%, 38.14% 0.06%,
+    50% 0%, 61.86% 0.06%, 67.07% 0.23%, 71.11% 0.51%, 74.5% 0.91%, 77.47% 1.42%, 80.12% 2.05%, 82.51% 2.79%, 84.68% 3.65%, 86.67% 4.64%, 88.48% 5.75%, 90.13% 6.99%, 91.64% 8.36%, 93.01% 9.87%, 94.25% 11.52%, 95.36% 13.33%, 96.35% 15.32%, 97.21% 17.49%, 97.95% 19.88%, 98.58% 22.53%, 99.09% 25.5%, 99.49% 28.89%, 99.77% 32.93%, 99.94% 38.14%
   );
-  background:
-    radial-gradient(120% 70% at 20% 0%, rgba(255, 255, 255, 0.22), transparent 60%),
+  background-color: rgba(126, 196, 214, 0.42);
+  background-image:
+    radial-gradient(120% 70% at 20% 0%, rgba(255, 255, 255, 0.28), transparent 60%),
     linear-gradient(
       160deg,
-      rgba(255, 255, 255, 0.3) 0%,
-      rgba(255, 255, 255, 0.13) 55%,
-      rgba(255, 255, 255, 0.2) 100%
+      rgba(255, 255, 255, 0.34) 0%,
+      rgba(255, 255, 255, 0.14) 55%,
+      rgba(255, 255, 255, 0.22) 100%
     );
   -webkit-backdrop-filter: blur(18px) saturate(1.5);
   backdrop-filter: blur(18px) saturate(1.5);
   box-shadow:
     inset 0 0 0 1px rgba(255, 255, 255, 0.4),
     inset 0 2px 0 rgba(255, 255, 255, 0.35);
-}
-
-/* Browsers with native squircle corners: keep the real shadow and border */
-@supports (corner-shape: squircle) {
-  .tile {
-    filter: none;
-  }
-
-  .tile::before {
-    clip-path: none;
-    border-radius: 50%;
-    corner-shape: squircle;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.5),
-      inset 0 -1px 0 rgba(255, 255, 255, 0.1),
-      0 16px 40px rgba(8, 28, 78, 0.22);
-  }
 }
 
 .tile > * {
@@ -253,9 +233,9 @@ section h2 sup {
 }
 
 .tile h3 {
-  margin: 14px 0 0;
+  margin: 4px 0 0;
   color: #fff;
-  font-size: 25px;
+  font-size: 22px;
   font-weight: 700;
   letter-spacing: -0.01em;
   line-height: 1.12;
@@ -263,7 +243,7 @@ section h2 sup {
 }
 
 .kind {
-  margin: 8px 0 0;
+  margin: 0;
   color: #8fe6d8;
   font-size: 15px;
   font-weight: 700;
@@ -271,10 +251,10 @@ section h2 sup {
 }
 
 .faculty {
-  margin: auto 0 0;
-  padding-top: 12px;
+  margin: 4px 0 0;
+  padding-top: 10px;
   border-top: 1px solid rgba(255, 255, 255, 0.28);
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.92);
   font-size: 14px;
   line-height: 1.4;
 }
@@ -284,7 +264,7 @@ section h2 sup {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  margin-top: 14px;
+  margin-top: 6px;
   padding: 12px 18px;
   border-radius: 999px;
   background: var(--mint);
@@ -304,10 +284,9 @@ section h2 sup {
   height: 16px;
 }
 
-/* Small phones: keep text inside the square */
 @media (max-width: 360px) {
   .tile h3 {
-    font-size: 22px;
+    font-size: 20px;
   }
 
   .kind,
@@ -318,7 +297,7 @@ section h2 sup {
 
 @media (min-width: 640px) {
   .grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -331,21 +310,41 @@ section h2 sup {
     font-size: 30px;
   }
 
-  .dates {
-    font-size: 24px;
-  }
-
   section h2 {
     font-size: 24px;
   }
 
   .tile h3 {
-    font-size: 23px;
+    font-size: 20px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
-@media (min-width: 1000px) {
-  .grid {
-    grid-template-columns: 1fr 1fr 1fr;
+@media (min-width: 900px) and (max-width: 1099px) {
+  .tile {
+    gap: 4px;
+    padding: 12%;
+  }
+
+  .time,
+  .kind,
+  .faculty,
+  .tile a {
+    font-size: 12px;
+  }
+
+  .tile h3 {
+    font-size: 16px;
+  }
+
+  .tile a {
+    padding: 8px 12px;
+  }
+
+  .faculty {
+    padding-top: 6px;
   }
 }
