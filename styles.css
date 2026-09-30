@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Avenir Next World";
-  src: url("fonts/AvenirNextWorld-Regular.woff2?v=20260930") format("woff2");
+  src: url("fonts/AvenirNextWorld-Regular.woff2?v=202609302") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -8,7 +8,7 @@
 
 @font-face {
   font-family: "Avenir Next World";
-  src: url("fonts/AvenirNextWorld-Demi.woff2?v=20260930") format("woff2");
+  src: url("fonts/AvenirNextWorld-Demi.woff2?v=202609302") format("woff2");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -16,18 +16,10 @@
 
 @font-face {
   font-family: "Avenir Next World";
-  src: url("fonts/AvenirNextWorld-Bold.woff2?v=20260930") format("woff2");
+  src: url("fonts/AvenirNextWorld-Bold.woff2?v=202609302") format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
-}
-
-:root {
-  --cyan: #29c4ea;
-  --mint: #63c5b6;
-  --teal: #3fbeb1;
-  --blue: #2654a5;
-  --font: "Avenir Next World", "Avenir Next", Avenir, "Segoe UI", sans-serif;
 }
 
 * {
@@ -48,15 +40,14 @@ html {
 body {
   position: relative;
   overflow-x: hidden;
-  font-family: var(--font);
+  font-family: "Avenir Next World", "Avenir Next", Avenir, "Segoe UI", sans-serif;
   font-weight: 400;
   color: #fff;
   line-height: 1.4;
+  background: #2654a5;
   background: linear-gradient(135deg, #2654a5 0%, #2f6ca8 45%, #3b99af 100%);
 }
 
-/* Fixed layer so the gradient still fills the screen on iOS, where
-   background-attachment: fixed is ignored. */
 body::before {
   content: "";
   position: fixed;
@@ -95,9 +86,16 @@ body::before {
 main {
   position: relative;
   z-index: 1;
-  width: min(1080px, calc(100% - 56px));
-  margin: 0 auto;
+  max-width: 1080px;
+  margin: 0 28px;
   padding: 32px 0 56px;
+}
+
+@supports (width: min(1px, 2px)) {
+  main {
+    width: min(1080px, calc(100% - 56px));
+    margin: 0 auto;
+  }
 }
 
 header img {
@@ -109,7 +107,7 @@ header img {
 
 h1 {
   margin: 24px 0 0;
-  color: var(--mint);
+  color: #63c5b6;
   font-size: 32px;
   font-weight: 700;
   letter-spacing: -0.01em;
@@ -118,7 +116,7 @@ h1 {
 
 .venue {
   margin: 4px 0 0;
-  color: var(--cyan);
+  color: #29c4ea;
   font-size: 24px;
   font-weight: 600;
   line-height: 1.2;
@@ -152,7 +150,7 @@ section h2::before {
   width: 6px;
   height: 1em;
   border-radius: 3px;
-  background: var(--mint);
+  background: #63c5b6;
 }
 
 section h2 sup {
@@ -168,7 +166,7 @@ section h2 sup {
   gap: 18px;
 }
 
-/* Liquid glass squircle. Exponent 3.79 matches the reference outline. */
+/* Rounded card is the fallback. Squircle and liquid glass apply when the browser can blur. */
 .tile {
   position: relative;
   display: flex;
@@ -179,43 +177,38 @@ section h2 sup {
   min-width: 0;
   min-height: 0;
   padding: 16%;
+  border-radius: 30%;
   color: #fff;
-  filter: drop-shadow(0 16px 22px rgba(8, 28, 78, 0.28));
-}
-
-.tile::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 0;
-  clip-path: polygon(
-    100% 50%, 99.94% 61.86%, 99.77% 67.07%, 99.49% 71.11%, 99.09% 74.5%, 98.58% 77.47%, 97.95% 80.12%, 97.21% 82.51%, 96.35% 84.68%, 95.36% 86.67%, 94.25% 88.48%, 93.01% 90.13%, 91.64% 91.64%, 90.13% 93.01%, 88.48% 94.25%, 86.67% 95.36%, 84.68% 96.35%, 82.51% 97.21%, 80.12% 97.95%, 77.47% 98.58%, 74.5% 99.09%, 71.11% 99.49%, 67.07% 99.77%, 61.86% 99.94%,
-    50% 100%, 38.14% 99.94%, 32.93% 99.77%, 28.89% 99.49%, 25.5% 99.09%, 22.53% 98.58%, 19.88% 97.95%, 17.49% 97.21%, 15.32% 96.35%, 13.33% 95.36%, 11.52% 94.25%, 9.87% 93.01%, 8.36% 91.64%, 6.99% 90.13%, 5.75% 88.48%, 4.64% 86.67%, 3.65% 84.68%, 2.79% 82.51%, 2.05% 80.12%, 1.42% 77.47%, 0.91% 74.5%, 0.51% 71.11%, 0.23% 67.07%, 0.06% 61.86%,
-    0% 50%, 0.06% 38.14%, 0.23% 32.93%, 0.51% 28.89%, 0.91% 25.5%, 1.42% 22.53%, 2.05% 19.88%, 2.79% 17.49%, 3.65% 15.32%, 4.64% 13.33%, 5.75% 11.52%, 6.99% 9.87%, 8.36% 8.36%, 9.87% 6.99%, 11.52% 5.75%, 13.33% 4.64%, 15.32% 3.65%, 17.49% 2.79%, 19.88% 2.05%, 22.53% 1.42%, 25.5% 0.91%, 28.89% 0.51%, 32.93% 0.23%, 38.14% 0.06%,
-    50% 0%, 61.86% 0.06%, 67.07% 0.23%, 71.11% 0.51%, 74.5% 0.91%, 77.47% 1.42%, 80.12% 2.05%, 82.51% 2.79%, 84.68% 3.65%, 86.67% 4.64%, 88.48% 5.75%, 90.13% 6.99%, 91.64% 8.36%, 93.01% 9.87%, 94.25% 11.52%, 95.36% 13.33%, 96.35% 15.32%, 97.21% 17.49%, 97.95% 19.88%, 98.58% 22.53%, 99.09% 25.5%, 99.49% 28.89%, 99.77% 32.93%, 99.94% 38.14%
-  );
-  background-color: rgba(126, 196, 214, 0.42);
-  background-image:
-    radial-gradient(120% 70% at 20% 0%, rgba(255, 255, 255, 0.28), transparent 60%),
-    linear-gradient(
-      160deg,
-      rgba(255, 255, 255, 0.34) 0%,
-      rgba(255, 255, 255, 0.14) 55%,
-      rgba(255, 255, 255, 0.22) 100%
-    );
-  -webkit-backdrop-filter: blur(18px) saturate(1.5);
-  backdrop-filter: blur(18px) saturate(1.5);
+  background: rgba(78, 156, 186, 0.78);
   box-shadow:
     inset 0 0 0 1px rgba(255, 255, 255, 0.4),
-    inset 0 2px 0 rgba(255, 255, 255, 0.35);
+    0 16px 28px rgba(8, 28, 78, 0.22);
 }
 
-.tile > * {
-  position: relative;
-  z-index: 1;
+@supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .tile {
+    background: transparent;
+    background-image:
+      radial-gradient(120% 70% at 20% 0%, rgba(255, 255, 255, 0.22), transparent 60%),
+      linear-gradient(
+        160deg,
+        rgba(255, 255, 255, 0.3) 0%,
+        rgba(255, 255, 255, 0.13) 55%,
+        rgba(255, 255, 255, 0.2) 100%
+      );
+    -webkit-backdrop-filter: blur(18px) saturate(1.5);
+    backdrop-filter: blur(18px) saturate(1.5);
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, 0.4),
+      inset 0 2px 0 rgba(255, 255, 255, 0.35);
+    filter: drop-shadow(0 16px 22px rgba(8, 28, 78, 0.28));
+    clip-path: polygon(
+      100% 50%, 99.5% 71.1%, 98% 80.1%, 95.4% 86.7%, 91.6% 91.6%, 86.7% 95.4%, 80.1% 98%, 71.1% 99.5%,
+      50% 100%, 28.9% 99.5%, 19.9% 98%, 13.3% 95.4%, 8.4% 91.6%, 4.6% 86.7%, 2% 80.1%, 0.5% 71.1%,
+      0% 50%, 0.5% 28.9%, 2% 19.9%, 4.6% 13.3%, 8.4% 8.4%, 13.3% 4.6%, 19.9% 2%, 28.9% 0.5%,
+      50% 0%, 71.1% 0.5%, 80.1% 2%, 86.7% 4.6%, 91.6% 8.4%, 95.4% 13.3%, 98% 19.9%, 99.5% 28.9%
+    );
+  }
 }
 
 .time {
@@ -227,7 +220,7 @@ section h2 sup {
   background: rgba(255, 255, 255, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.35);
   color: #fff;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 700;
   letter-spacing: 0.01em;
 }
@@ -235,7 +228,7 @@ section h2 sup {
 .tile h3 {
   margin: 4px 0 0;
   color: #fff;
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 700;
   letter-spacing: -0.01em;
   line-height: 1.12;
@@ -245,7 +238,7 @@ section h2 sup {
 .kind {
   margin: 0;
   color: #8fe6d8;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 700;
   line-height: 1.3;
 }
@@ -255,7 +248,7 @@ section h2 sup {
   padding-top: 10px;
   border-top: 1px solid rgba(255, 255, 255, 0.28);
   color: rgba(255, 255, 255, 0.92);
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.4;
 }
 
@@ -267,9 +260,9 @@ section h2 sup {
   margin-top: 6px;
   padding: 12px 18px;
   border-radius: 999px;
-  background: var(--mint);
+  background: #63c5b6;
   color: #10306b;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 700;
   text-decoration: none;
   box-shadow: 0 6px 16px rgba(8, 28, 78, 0.2);
@@ -286,12 +279,12 @@ section h2 sup {
 
 @media (max-width: 360px) {
   .tile h3 {
-    font-size: 20px;
+    font-size: 22px;
   }
 
   .kind,
   .faculty {
-    font-size: 13px;
+    font-size: 14px;
   }
 }
 
@@ -315,7 +308,7 @@ section h2 sup {
   }
 
   .tile h3 {
-    font-size: 20px;
+    font-size: 22px;
   }
 
   .grid {
@@ -333,11 +326,11 @@ section h2 sup {
   .kind,
   .faculty,
   .tile a {
-    font-size: 12px;
+    font-size: 14px;
   }
 
   .tile h3 {
-    font-size: 16px;
+    font-size: 18px;
   }
 
   .tile a {
